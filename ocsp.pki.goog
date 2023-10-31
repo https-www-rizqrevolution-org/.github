@@ -1,0 +1,149 @@
+#rizqshops.com
+Help Center
+Community
+Set up a Google Workspace host name allowlist
+When you’re setting up Google Workspace, you need to add some host names to your allowlist so Google Workspace APIs work correctly.
+
+Important:
+
+This information is subject to change without notice.
+For product-specific information about APIs, refer to the Help Center content for that product.
+Step 1: Open connectivity ports
+Open the following ports:
+
+Port	Purpose
+TCP port 443 (HTTPS)	Access the main URLs for authentication and API call
+TCP port 80 (HTTP)	Allow CRL and OCSP checks (Step 4 below)
+Notes:
+
+Depending on your setup and the application, you might need to allow additional rules.
+If you're using a Microsoft Windows client, you might need to allow these rules on a per-application basis. For details, consult your Microsoft documentation.
+Step 2: URLs to allow
+Expand section  |  Collapse all & go to top
+
+What's new?
+January 17, 2023—Added URL for embedded YouTube videos within Google Workspace for Education services
+This feature has been rolled back. If you updated your allowlist or blocklist to include www.youtube.com, you’ll need to reverse to your prior state to preserve the way your organization uses YouTube videos within Google Workspace for Education services, such as Classroom and Slides.
+
+May 2, 2022—Added URLs for Google Chat
+March 31, 2021—Added URLs for Google Meet and marked Google Contacts as deprecated
+Top-level URLs
+Allow the following URLs for Google Workspace APIs:
+
+Purpose	URL
+Authentication
+For more information, go to Using OAuth 2.0 for Web Server Applications.
+
+https://accounts.google.com/o/oauth2
+https://www.googleapis.com/oauth2
+https://oauth2.googleapis.com/token
+Main API entry point	https://*.googleapis.com
+(where * is any string not containing a period)
+
+Email	In addition to the main API entry point:
+https://mail.google.com/mail
+Contacts and Global Address List (GAL)	https://www.google.com/m8
+Google Workspace Admin Settings API	https://apps-apis.google.com/a
+Accounts and sign-ins	https://www.google.com/accounts/ClientLogin
+https://www.google.com/accounts/
+ 
+
+Tip: You might also want to allow https://www.googleapis.com/generate_204 which can be used to check the HTTP status code (204).
+
+(Optional) URLs for additional control
+For more control, you can also allow the following URLs:
+
+Purpose	URL
+More authentication URLs
+You might not need all these URLs, depending on your setup.
+
+https://accounts.google.com/o/oauth2/auth
+https://accounts.google.com/o/oauth2/token
+https://accounts.google.com/o/oauth2/v2/auth
+https://oauth2.googleapis.com/token
+https://www.googleapis.com/oauth2/v3/token
+https://www.googleapis.com/oauth2/v4/token
+https://www.googleapis.com/oauth2/v2/tokeninfo
+https://www.googleapis.com/oauth2/v3/tokeninfo
+https://accounts.google.com/o/oauth2/revoke
+https://accounts.youtube.com
+https://www.google.com
+https://fonts.gstatic.com
+https://ssl.gstatic.com
+https://www.gstatic.com
+https://*.googleusercontent.com/*
+Gmailand thenGmail API	https://mail.google.com/mail https://www.googleapis.com/gmail https://www.googleapis.com/upload/gmail
+Google Calendar API	https://www.googleapis.com/calendar
+Google Chat	https://chat.google.com
+https://mail.google.com/chat
+Google Classroom API	https://classroom.googleapis.com
+Google Contacts API
+(Deprecated. The People API is recommended.)
+
+https://www.google.com/m8/feeds
+Global Address List (GAL)
+Google Workspace Admin SDKand thenDomain Shared Contacts API
+
+https://www.google.com/m8/feeds/gal
+Google Drive APIs	https://www.googleapis.com/drive https://www.googleapis.com/upload/drive
+Google Drive Activity API	https://www.googleapis.com/appsactivity
+Google Meet	https://*.googlevideo.com/*
+https://*.youtube-nocookie.com/*
+https://*.ytimg.com/*
+Google Sheets API	https://sheets.googleapis.com
+Google Slides API	https://slides.googleapis.com
+Google Tasks API	https://www.googleapis.com/tasks
+Google Workspace Admin SDKand thenData Transfer API	https://www.googleapis.com/admin/datatransfer
+Google Workspace Admin SDKand thenDirectory API	https://www.googleapis.com/admin/directory
+Google Workspace Admin SDKand thenEnterprise License Manager API	https://www.googleapis.com/apps/licensing
+Google Workspace Admin SDKand thenGroups Migration API	https://www.googleapis.com/upload/groups
+Google Workspace Admin SDKand thenGroups Settings API	https://www.googleapis.com/groups
+Google Workspace Admin SDKand thenReports API	https://www.googleapis.com/admin/reports
+People API	https://people.googleapis.com
+Step 3: Review Google IP address ranges
+Review how to find Obtain Google IP address ranges. Any of the Google URLs specified in step 2 can use the Google IP addresses.
+
+You can also test the connection from the Google Admin Toolbox.
+
+Step 4: Allow checks
+Expand section  |  Collapse all & go to top
+
+CRL check
+A Certificate Revocation List (CRL) is a list of digital certificates revoked by the issuing Certificate Authority (CA) before their scheduled expiration date. These certificates should not be trusted.
+
+An HTTP (not HTTPS) URL on the CA website typically sends a CRL. The CRL distribution points are visible in the certificate X509v3 details.
+
+Here are the current CRL distribution points that are in use for Google services:
+
+http://crl.pki.goog
+http://crls.pki.goog
+For details, go to Google Trust Services.
+
+OCSP check
+The Online Certificate Status Protocol (OCSP) is an internet protocol used for obtaining the revocation status of an X.509 digital certificate.
+
+Current OCSP distribution point in use for Google services: http://ocsp.pki.goog
+
+Related topics
+Drive and Sites firewall and proxy settings
+Chrome devices: Set up a hostname allowlist
+ 
+
+
+Google, Google Workspace, and related marks and logos are trademarks of Google LLC. All other company and product names are trademarks of the companies with which they are associated.
+
+
+Give feedback about this article
+
+Was this helpful?
+YesNo
+Need more help?
+Post to the help community
+Get answers from community members
+Contact us
+Tell us more and we’ll help you get there
+More Google services
+API Overviews
+Set up a Google Workspace host name allowlist
+Professional email, online storage, shared calendars, video meetings and more. Start your free Google Workspace trial today.
+
